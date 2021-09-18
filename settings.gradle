@@ -1,7 +1,11 @@
 pluginManagement {
 	repositories {
 		gradlePluginPortal()
+		maven { url "https://maven.aliyun.com/nexus/content/groups/public/"}
 		maven { url 'https://repo.spring.io/plugins-release' }
+		maven { url "https://repo.spring.io/libs-spring-framework-build" }
+		mavenLocal()
+		mavenCentral()
 	}
 }
 apply from: "$rootDir/gradle/build-cache-settings.gradle"
@@ -32,7 +36,11 @@ include "spring-websocket"
 include "framework-bom"
 include "integration-tests"
 
+include 'spring-debug'
+
 rootProject.name = "spring"
 rootProject.children.each {project ->
 	project.buildFileName = "${project.name}.gradle"
 }
+
+
